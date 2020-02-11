@@ -1,0 +1,81 @@
+body {
+    background-color: #373042;
+}
+
+/*
+* *:hover { border:2px solid #89A81E }                   
+* * *:hover { border:2px solid #F34607 }                 
+* * * *:hover { border:2px solid #5984C3 }               
+* * * * *:hover { border:2px solid #CD1821 }          
+* * * * * *:hover { border:2px dotted #89A81E }       
+* * * * * * *:hover { border:2px dotted #F34607 }     
+* * * * * * * *:hover { border:2px dotted #5984C3 }   
+* * * * * * * * *:hover { border:2px dotted #CD1821 } 
+*/
+
+nav {
+    padding: 50px;
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+#main-hero {
+    background-image: url("images/geometric-pattern-on-chameleon-color-3612932.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #FCFCFC;
+    /* padding-top: 10em; */
+    text-align: center;
+}
+
+#main-hero .container {
+    padding-top: 10%;
+    padding-bottom: 15%;
+}
+
+#section-games {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #373042;
+    color: #FCFCFC;
+    text-align: center;
+    
+    padding: 5% 0 10% 0;
+}
+
+#section-games .container {
+    padding-top: 10%;
+    padding-bottom: 15%
+}
+
+#section-sponsors {
+    background-image: url("images/geometric-pattern-on-chameleon-color-3612932.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #FCFCFC;
+    text-align: center;
+    padding: 5% 0 10% 0;
+}
+
+#section-sponsors .container {
+    padding-top: 10%;
+    padding-bottom: 15%
+}
+
+
+footer {
+    background-color: #02111B;
+    color: #5D737E;
+    text-align: center;
+    padding: 3% 0 3% 0;
+}
+
+footer li {
+    padding-bottom: 20em;
+}
