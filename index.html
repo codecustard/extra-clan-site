@@ -53,9 +53,9 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container fade-in">
             <h1 class="display-4">ESPORTS AND EVENTS</h1>
-            <p class="lead"><a href="#">Learn more...</a></p>
+            <p class="lead"><a href="#">Learn more</a></p>
         </div>
     </div>
 
@@ -63,8 +63,8 @@
 
     <section id="section-games">
         <div class="container">
-            <h1>Games</h1> <br />
-            <img src="https://media.giphy.com/media/l0MYtTmeB2KYB8bQI/giphy.gif" alt="">
+            <h1 class="fade-in">Games</h1> <br />
+            <img class="fade-in" src="https://media.giphy.com/media/l0MYtTmeB2KYB8bQI/giphy.gif" alt="">
             <div class="row">
                 <div class="col">Twitch</div>
                 <div class="col">Twitch</div>
@@ -75,7 +75,7 @@
 
     <section id="section-sponsors">
         <div class="container">
-            <h1>Sponsors</h1>
+            <h1 class="fade-in">Sponsors</h1>
         </div>
     </section>
 
@@ -91,6 +91,36 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
+        const faders = document.querySelectorAll('.fade-in');
+    const sliders = document.querySelectorAll('.slide-in');
+
+    const appearOptions = {
+        threshold: 1,
+        rootMargin: "0px 0px -20px  0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver( function(entries, appearOnScroll) {
+        entries.forEach( entry => {
+            if (!entry.isIntersecting) {
+                return;
+            }
+            else {
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            }
+        })
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+    sliders.forEach(slider => {
+        appearOnScroll.observe(slider);
+    });
+
+
+
         document.getElementsByTagName("body")[0].onscroll = function parallaxScroll() {  
             var scrolltotop = document.scrollingElement.scrollTop;
             var target = document.getElementById("main-hero");

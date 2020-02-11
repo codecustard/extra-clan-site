@@ -75,8 +75,10 @@ nav {
 }
 
 #main-hero .container {
-    padding-top: 10%;
-    padding-bottom: 15%;
+    /* padding-top: 10%;
+    padding-bottom: 15%; */
+    margin-top: 15%;
+    min-height: 40vh;
 }
 
 #section-games {
@@ -120,4 +122,16 @@ footer {
 
 footer li {
     padding-bottom: 20em;
+}
+
+
+
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 800ms ease-in;
+}
+
+.fade-in.appear {
+    opacity: 1;
 }
