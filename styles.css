@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: #02111B;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -61,6 +61,9 @@ nav {
 
 
 /* CLASSES */
+.drop-shadow {
+    box-shadow:  0px 10px 50px black;
+}
 
 
 #main-hero {
@@ -81,15 +84,34 @@ nav {
     min-height: 40vh;
 }
 
-#section-games {
+.container-form {
+    width: 60%;
+    margin-left: 20%;
+    margin-right:20%;
+}
+
+#section-about {
     /* background-image: url("https://media.giphy.com/media/l0MYtTmeB2KYB8bQI/giphy.gif"); */
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: black;
+    background-color: #02111B;
+    color: #5D737E;
+    text-align: center;
+    padding: 4% 0 10% 0;
+}
+#section-about h2 {
+    line-height: 3rem;
+}
+
+#section-games {
+    /* background-image: radial-gradient( at center, black, #02111B, #02111B); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #02111B;
     color: #FCFCFC;
     text-align: center;
     
-    padding: 4% 0 10% 0;
+    padding: 6% 0 10% 0;
 }
 
 #section-games .container {
@@ -97,7 +119,21 @@ nav {
     
 }
 
+#section-social .container {
+    padding: 4% 0 10% 0;
+}
+
 #section-sponsors {
+    background-image: url("images/geometric-pattern-on-chameleon-color-3612932.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #FCFCFC;
+    text-align: center;
+    padding: 5% 0 10% 0;
+}
+
+#section-social {
     background-image: url("images/geometric-pattern-on-chameleon-color-3612932.jpg");
     background-repeat: no-repeat;
     background-size: cover;
