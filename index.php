@@ -49,6 +49,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sponsors</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#register-modal" href="#">Register</a>
+                </li>
                 </ul>
             </div>
         </nav>
@@ -85,6 +93,29 @@
         &copy; 2020 Extra Gaming. All Rights Reserved. <br /> <br />
         <i class="fab fa-facebook-f"></i> <i class="fab fa-twitter"></i> <i class="fab fa-youtube"></i> <i class="fab fa-twitch"></i>
     </footer>
+
+
+    <div class="modal" id="register-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Register</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="includes/register.inc.php" method="POST">
+                  <input type="text" class="form-control" name="username" placeholder="Enter your username" required> </input><br/>
+                  <input type="email" class="form-control" name="email" placeholder="Enter your email" required> </input><br/>
+                  <input type="password" class="form-control" name="password" placeholder="Enter your password" required> </input><br/>
+                  <input type="password" class="form-control" name="password2" placeholder="Enter your password" required> </input><br/>
+                  <button type="submit" class="btn btn-dark" name="register-button">Register</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
