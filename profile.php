@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,19 +19,53 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <title>Extra Gaming</title>
+    <title>Extra Gaming - Profile</title>
 </head>
 <body>
 
 
     <div class="jumbotron jumbotron-fluid" id="main-hero">
-    <?php
+    <?php 
     require 'header.php';
     ?>
 
-        <div class="container fade-in">
-            <h1 class="display-4">ESPORTS AND EVENTS</h1>
-            <p class="lead"><a href="#">Learn more</a></p>
+        <div class="container">
+            <h1 class="display-4">PROFILE</h1>
+            
+            <form action="includes/update-profile.inc.php" method="POST">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="password2">Password</label>
+                    <input type="password" class="form-control" name="password2" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label for="twitch-channel">Twitch Channel</label>
+
+                    <input type="text" class="form-control" name="twitch-channel" placeholder="twitch-channel" value="<?php echo $_SESSION['twitchChannel']?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="youtube-channel">Youtube Channel</label>
+                    <input type="text" class="form-control" name="youtube-channel" placeholder="youtube-channel" value="<?php echo $_SESSION['youtubeChannel']?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea class="form-control" name="bio" rows="3"><?php echo $_SESSION['userBio']?></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" class="form-control" name="current-password" placeholder="Current Password" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" name="save-button">Save</button>
+            </form>
+
         </div>
     </div>
 
@@ -34,12 +73,10 @@ session_start();
 
     <section id="section-games">
         <div class="container">
-            <h1 class="fade-in">Games</h1> <br />
-            <img class="fade-in drop-shadow" src="https://media.giphy.com/media/l0MYtTmeB2KYB8bQI/giphy.gif" alt="">
+            <h1 class="fade-in"><?php echo $_SESSION['username']?> Profile</h1> <br />
             <div class="row">
-                <div class="col fade-in" id="twitch-meek">
-                </div>
-                <div class="col fade-in" id="twitch-bipolarbear"></div>
+                <?php echo $_SESSION['userBio']; ?>
+                <div class="col fade-in" id="twitch-embed"></div>
 
             </div>
         </div>
@@ -51,7 +88,8 @@ session_start();
         </div>
     </section>
 
-    <?php 
+
+    <?php
     require 'footer.php';
     ?>
 
@@ -128,15 +166,10 @@ session_start();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script type="text/javascript">
-        new Twitch.Embed("twitch-meek", {
+        new Twitch.Embed("twitch-embed", {
             width: 480,
             height: 480,
-            channel: "meekstarcraft"
-        });
-        new Twitch.Embed("twitch-bipolarbear", {
-            width: 480,
-            height: 480,
-            channel: "bipolarbear"
+            channel: "<?php echo $_SESSION['twitchChannel']?>"
         });
     </script>
 

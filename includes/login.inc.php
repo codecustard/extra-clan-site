@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if (isset($_POST['login-button'])) {
     require 'dbh.inc.php';
@@ -32,6 +33,10 @@ if (isset($_POST['login-button'])) {
                     session_start();
                     $_SESSION['userId'] = $row['usersId'];
                     $_SESSION['username'] = $row['usersUser'];
+                    $_SESSION['userBio'] = $row['usersBio'];
+                    $_SESSION['twitchChannel'] = $row['usersTwitch'];
+                    $_SESSION['youtubeChannel'] = $row['usersYoutube'];
+
 
                     header("Location: ../index.php?login=success");
                     exit();
