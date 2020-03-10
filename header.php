@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
             <!-- <a class="navbar-brand" href="#">Extra</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +23,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Watch</a>
+                    <a class="nav-link" href="watch.php">Watch</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sponsors</a>

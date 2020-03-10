@@ -18,40 +18,7 @@
     <div class="jumbotron jumbotron-fluid" id="main-hero">
 
 
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-transparent">
-            <!-- <a class="navbar-brand" href="#">Extra</a> -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto navbar-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Games
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Starcraft 2</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Watch</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sponsors</a>
-                </li>
-                </ul>
-            </div>
-        </nav>
+        <?php require 'header.php'; ?>
 
         <div class="container fade-in">
             <h1 class="display-4">Who We Are?</h1>
@@ -77,7 +44,7 @@
         <div class="container">
             <h1 class="fade-in">Follow Us!</h1> <br />
 
-            <i class="fade-in fab fa-facebook-f fa-7x fa-fw"></i> <i class="fade-in fab fa-twitter fa-7x fa-fw"></i> <i class="fade-in fab fa-youtube fa-7x fa-fw"></i> <i class="fade-in fab fa-twitch fa-7x fa-fw"></i>
+            <i class="fade-in fab fa-facebook-f fa-7x fa-fw"></i> <i class="fade-in fab fa-twitter fa-7x fa-fw"></i> <i class="fade-in fab fa-youtube fa-7x fa-fw"></i> <a href="https://discord.gg/c3yHUB"><i class="fade-in fab fa-twitch fa-7x fa-fw"></i></a>
         </div>
         <div class="container">
             <h1>Contact Us!</h1> <br />
@@ -116,10 +83,75 @@
     </section>
 
 
-    <footer>
-        &copy; 2020 Extra Gaming. All Rights Reserved. <br /> <br />
-        <i class="fab fa-facebook-f"></i> <i class="fab fa-twitter"></i> <i class="fab fa-youtube"></i> <i class="fab fa-twitch"></i>
-    </footer>
+    <?php require 'footer.php' ?>
+
+
+    <!-- MODALS -->
+
+    <!-- REGISTER MODAL -->
+    <div class="modal" id="register-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Register</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="includes/register.inc.php" method="POST">
+                  <input type="text" class="form-control" name="username" placeholder="Enter your username" required> </input><br/>
+                  <input type="email" class="form-control" name="email" placeholder="Enter your email" required> </input><br/>
+                  <input type="password" class="form-control" name="password" placeholder="Enter your password" required> </input><br/>
+                  <input type="password" class="form-control" name="password2" placeholder="Enter your password" required> </input><br/>
+                  <button type="submit" class="btn btn-dark" name="register-button">Register</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- SUCCESSFUL REGISTRATION MODAL -->
+      <div class="modal" id="register-success-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Registration Complete</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p>Registration successful!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="login-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="includes/login.inc.php" method="POST">
+                  <input type="text" class="form-control" name="username" placeholder="Enter your username" required> </input><br/>
+                  <input type="password" class="form-control" name="password" placeholder="Enter your password" required> </input><br/>
+                  <button type="submit" class="btn btn-dark" name="login-button">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+<!-- END OF MODALS -->
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

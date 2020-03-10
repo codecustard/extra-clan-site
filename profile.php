@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,44 +18,57 @@ if (!isset($_SESSION['username'])) {
     <div class="jumbotron jumbotron-fluid" id="main-hero">
     <?php 
     require 'header.php';
+
+    if (!isset($_SESSION['username'])) {
+        header("Location: index.php");
+        exit();
+    }
+
     ?>
 
         <div class="container">
             <h1 class="display-4">PROFILE</h1>
             
-            <form action="includes/update-profile.inc.php" method="POST">
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                    <label for="password2">Password</label>
-                    <input type="password" class="form-control" name="password2" placeholder="Password">
-                </div>
+            <div class="container-form">
+                <form action="includes/update-profile.inc.php" method="POST">
 
-                <div class="form-group">
-                    <label for="twitch-channel">Twitch Channel</label>
-
-                    <input type="text" class="form-control" name="twitch-channel" placeholder="twitch-channel" value="<?php echo $_SESSION['twitchChannel']?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="youtube-channel">Youtube Channel</label>
-                    <input type="text" class="form-control" name="youtube-channel" placeholder="youtube-channel" value="<?php echo $_SESSION['youtubeChannel']?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="bio">Bio</label>
-                    <textarea class="form-control" name="bio" rows="3"><?php echo $_SESSION['userBio']?></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="current-password">Current Password</label>
-                    <input type="password" class="form-control" name="current-password" placeholder="Current Password" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary" name="save-button">Save</button>
-            </form>
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea class="form-control" name="bio" rows="3"><?php echo $_SESSION['userBio']?></textarea>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="twitch-channel">Twitch Channel</label>
+        
+                            <input type="text" class="form-control" name="twitch-channel" placeholder="twitch-channel" value="<?php echo $_SESSION['twitchChannel']?>">
+                        </div>
+        
+                        <div class="form-group col-md-6">
+                            <label for="youtube-channel">Youtube Channel</label>
+                            <input type="text" class="form-control" name="youtube-channel" placeholder="youtube-channel" value="<?php echo $_SESSION['youtubeChannel']?>">
+                        </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="password">Change Password</label>
+                            <input type="password" class="form-control" name="password" placeholder="New Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password2">Change Password</label>
+                            <input type="password" class="form-control" name="password2" placeholder="New Password">
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" class="form-control" name="current-password" placeholder="Current Password" required>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary" name="save-button">Save</button>
+                </form>
+            </div>
 
         </div>
     </div>
@@ -73,18 +77,21 @@ if (!isset($_SESSION['username'])) {
 
     <section id="section-games">
         <div class="container">
-            <h1 class="fade-in"><?php echo $_SESSION['username']?> Profile</h1> <br />
+            <h1 class="fade-in"><?php echo $_SESSION['username']?></h1> <br /><br /><br />
             <div class="row">
-                <?php echo $_SESSION['userBio']; ?>
-                <div class="col fade-in" id="twitch-embed"></div>
-
+                <div class="col">
+                    <?php echo $_SESSION['userBio']; ?>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="section-sponsors">
         <div class="container">
-            <h1 class="fade-in">Sponsors</h1>
+            <h1 class="fade-in">Media</h1> <br /><br /><br />
+            <div class="row">
+                <div class="col" id="twitch-embed"></div>
+            </div>
         </div>
     </section>
 

@@ -10,19 +10,20 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <title>Extra Gaming</title>
+    <title>Extra Gaming - Watch</title>
 </head>
 <body>
 
 
     <div class="jumbotron jumbotron-fluid" id="main-hero">
-    <?php
+    <?php 
     require 'header.php';
+    
     ?>
 
-        <div class="container fade-in">
-            <h1 class="display-4">ESPORTS AND EVENTS</h1>
-            <p class="lead"><a href="#">Learn more</a></p>
+        <div class="container">
+            <h1 class="display-4">WATCH</h1>
+
         </div>
     </div>
 
@@ -30,13 +31,15 @@
 
     <section id="section-games">
         <div class="container">
-            <h1 class="fade-in">Games</h1> <br />
-            <img class="fade-in drop-shadow" src="https://media.giphy.com/media/l0MYtTmeB2KYB8bQI/giphy.gif" alt="">
+            <h1 class="fade-in"><?php echo $_SESSION['username']?></h1> <br />
             <div class="row">
-                <div class="col fade-in" id="twitch-meek">
+                <div class="col">
+                    <?php echo $_SESSION['userBio']; ?>
                 </div>
-                <div class="col fade-in" id="twitch-bipolarbear"></div>
-
+            </div>
+            <br /><br /><br />
+            <div class="row">
+                <div class="col fade-in" id="twitch-embed"></div>
             </div>
         </div>
     </section>
@@ -47,7 +50,8 @@
         </div>
     </section>
 
-    <?php 
+
+    <?php
     require 'footer.php';
     ?>
 
@@ -124,15 +128,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script type="text/javascript">
-        new Twitch.Embed("twitch-meek", {
+        new Twitch.Embed("twitch-embed", {
             width: 480,
             height: 480,
-            channel: "meekstarcraft"
-        });
-        new Twitch.Embed("twitch-bipolarbear", {
-            width: 480,
-            height: 480,
-            channel: "bipolarbear"
+            channel: "<?php echo $_SESSION['twitchChannel']?>"
         });
     </script>
 

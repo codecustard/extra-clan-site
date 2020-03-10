@@ -9,9 +9,9 @@ if (isset($_POST['save-button'])) {
     $currentPassword = $_POST['current-password'];
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
-    $twitchChannel = $_POST['twitch-channel'];
-    $youtubeChannel = $_POST['youtube-channel'];
-    $bio = $_POST['bio'];
+    $twitchChannel = htmlspecialchars($_POST['twitch-channel']);
+    $youtubeChannel = htmlspecialchars($_POST['youtube-channel']);
+    $bio = htmlspecialchars($_POST['bio']);
 
     if (empty($currentPassword)) {
         header("Location: ../index.php?error=emptypassword");
