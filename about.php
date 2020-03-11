@@ -50,33 +50,37 @@
             <h1>Contact Us!</h1> <br />
 
             <div class="container-form">
-            <form>
+            <form action="includes/send-message.inc.php" method="POST">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="input-firstname">First Name</label>
-                    <input type="email" class="form-control" id="input-firstname" placeholder="First Name">
+                    <input type="text" class="form-control" name="input-firstname" placeholder="First Name" required>
                   </div>
                   <div class="form-group col-md-6">
                     <label for="input-lastname">Last Name</label>
-                    <input type="password" class="form-control" id="input-lastname" placeholder="Last Name">
+                    <input type="text" class="form-control" name="input-lastname" placeholder="Last Name" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="input-email">Email Address</label>
-                  <input type="email" class="form-control" id="input-email" placeholder="Email Address">
+                  <input type="email" class="form-control" name="input-email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group">
                   <label for="input-subject">Subject</label>
-                  <input type="text" class="form-control" id="input-subject" placeholder="Subject">
+                  <input type="text" class="form-control" name="input-subject" placeholder="Subject" required>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-12">
                     <label for="input-message">Message</label>
-                    <textarea class="form-control" id="input-message" rows="3"></textarea>
+                    <textarea class="form-control" name="input-message" rows="3" required></textarea>
                   </div>
                 </div>
 
-                <button type="submit" class="btn btn-dark">Submit</button>
+                <button type="submit" class="btn btn-dark" name="send-message-button">Submit</button><br /><br />
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="spam-check" required>
+                  <label class="form-check-label" for="spam-check">I am not a robot</label>
+                </div>
               </form>
             </div>
         </div>
