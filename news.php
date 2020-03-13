@@ -10,93 +10,56 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <title>Extra Gaming - Profile</title>
+    <title>Extra Gaming - News</title>
 </head>
 <body>
 
 
     <div class="jumbotron jumbotron-fluid" id="main-hero">
-    <?php 
-    require 'header.php';
+        <?php
+        require 'header.php';
+        $singleNews = isset($_GET['newsId']);
+        if ($singleNews) {
+            require 'includes/get-news-by-id.inc.php';
+        }
+        ?>
 
-    if (!isset($_SESSION['username'])) {
-        header("Location: index.php");
-        exit();
-    }
-
-    ?>
-
-        <div class="container">
-            <h1 class="display-4">PROFILE</h1>
-            
-            <div class="container-form">
-                <form action="includes/update-profile.inc.php" method="POST">
-
-                    <div class="form-group">
-                        <label for="bio">Bio</label>
-                        <textarea class="form-control" name="bio" rows="3"><?php echo $_SESSION['userBio']?></textarea>
-                    </div>
-    
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="twitch-channel">Twitch Channel</label>
-        
-                            <input type="text" class="form-control" name="twitch-channel" placeholder="twitch-channel" value="<?php echo $_SESSION['twitchChannel']?>">
-                        </div>
-        
-                        <div class="form-group col-md-6">
-                            <label for="youtube-channel">Youtube Channel</label>
-                            <input type="text" class="form-control" name="youtube-channel" placeholder="youtube-channel" value="<?php echo $_SESSION['youtubeChannel']?>">
-                        </div>
-                    </div>
-    
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="password">Change Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="New Password">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="password2">Change Password</label>
-                            <input type="password" class="form-control" name="password2" placeholder="New Password">
-                        </div>
-                    </div>
-    
-                    <div class="form-group">
-                        <label for="current-password">Current Password</label>
-                        <input type="password" class="form-control" name="current-password" placeholder="Current Password" required>
-                    </div>
-    
-                    <button type="submit" class="btn btn-primary" name="save-button">Save</button>
-                </form>
-            </div>
-
+        <div class="container fade-in">
+        <?php 
+            if ($singleNews) {
+                echo "<h1 class='display-4'>".$newsTitle."</h1>
+                <h2>".$newsDescription."</h2>";
+            }
+            else {
+                echo "<h1 class='display-4'>LATEST NEWS AND EVENTS</h1>";
+            }
+        ?>
         </div>
     </div>
 
     
 
-    <section id="section-games">
+    <section id="section-about">
         <div class="container">
-            <h1 class="fade-in"><?php echo $_SESSION['username']?></h1> <br /><br /><br />
-            <div class="row">
-                <div class="col">
-                    <?php echo $_SESSION['userBio']; ?>
-                </div>
-            </div>
+            <?php 
+            if ($singleNews)
+            {
+                echo "<h2>". $newsContent . "</h2>";
+            }
+            else {
+                require 'includes/get-all-news.inc.php'; 
+            }
+            ?>
         </div>
     </section>
 
     <section id="section-sponsors">
         <div class="container">
-            <h1 class="fade-in">Media</h1> <br /><br /><br />
-            <div class="row">
-                <div class="col" id="twitch-embed"></div>
-            </div>
+            <!-- <h1 class="fade-in">Sponsors</h1> -->
         </div>
     </section>
 
-
-    <?php
+    <?php 
     require 'footer.php';
     ?>
 
@@ -105,10 +68,15 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script type="text/javascript">
-        new Twitch.Embed("twitch-embed", {
+        new Twitch.Embed("twitch-meek", {
             width: 480,
             height: 480,
-            channel: "<?php echo $_SESSION['twitchChannel']?>"
+            channel: "meekstarcraft"
+        });
+        new Twitch.Embed("twitch-bipolarbear", {
+            width: 480,
+            height: 480,
+            channel: "bipolarbear"
         });
     </script>
 

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
-    <title>Extra Gaming - Profile</title>
+    <title>Extra Gaming - Post</title>
 </head>
 <body>
 
@@ -24,41 +24,34 @@
         exit();
     }
 
+    $postTitle = isset($_SESSION['postTitle']) ? $_SESSION['postTitle'] : '';
+    $postDescription = isset($_SESSION['postDescription']) ? $_SESSION['postDescription'] : '';
+    $postContent = isset($_SESSION['postContent']) ? $_SESSION['postContent'] : '';
+
     ?>
 
         <div class="container">
-            <h1 class="display-4">PROFILE</h1>
+            <h1 class="display-4">CREATE NEW POST</h1>
             
             <div class="container-form">
-                <form action="includes/update-profile.inc.php" method="POST">
+                <form action="includes/create-post.inc.php" method="POST">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="title">Title</label>
+        
+                            <input type="text" class="form-control" name="title" placeholder="title" value="<?php echo $postTitle?>">
+                        </div>
+        
+                        <div class="form-group col-md-6">
+                            <label for="youtube-channel">Description</label>
+                            <input type="text" class="form-control" name="description" placeholder="description" value="<?php echo $postDescription?>">
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <label for="bio">Bio</label>
-                        <textarea class="form-control" name="bio" rows="3"><?php echo $_SESSION['userBio']?></textarea>
-                    </div>
-    
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="twitch-channel">Twitch Channel</label>
-        
-                            <input type="text" class="form-control" name="twitch-channel" placeholder="twitch-channel" value="<?php echo $_SESSION['twitchChannel']?>">
-                        </div>
-        
-                        <div class="form-group col-md-6">
-                            <label for="youtube-channel">Youtube Channel</label>
-                            <input type="text" class="form-control" name="youtube-channel" placeholder="youtube-channel" value="<?php echo $_SESSION['youtubeChannel']?>">
-                        </div>
-                    </div>
-    
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="password">Change Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="New Password">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="password2">Change Password</label>
-                            <input type="password" class="form-control" name="password2" placeholder="New Password">
-                        </div>
+                        <label for="content">Content</label>
+                        <textarea class="form-control" name="content" rows="12"><?php echo $postContent?></textarea>
                     </div>
     
                     <div class="form-group">
@@ -66,7 +59,7 @@
                         <input type="password" class="form-control" name="current-password" placeholder="Current Password" required>
                     </div>
     
-                    <button type="submit" class="btn btn-primary" name="save-button">Save</button>
+                    <button type="submit" class="btn btn-primary" name="create-post-button">Create Post</button>
                 </form>
             </div>
 
@@ -77,28 +70,34 @@
 
     <section id="section-games">
         <div class="container">
-            <h1 class="fade-in"><?php echo $_SESSION['username']?></h1> <br /><br /><br />
             <div class="row">
                 <div class="col">
-                    <?php echo $_SESSION['userBio']; ?>
+                    <?php echo "
+                    <h1 class='display-4' id='post-title'>".$postTitle."</h1>
+                    <h2 id='post-description'>".$postDescription."</h2>
+                    <p class='lead' id='post-content'>".$postContent."</p><br /><br /><br />";
+                    ?>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="section-sponsors">
-        <div class="container">
+        <!-- <div class="container">
             <h1 class="fade-in">Media</h1> <br /><br /><br />
             <div class="row">
                 <div class="col" id="twitch-embed"></div>
             </div>
-        </div>
+        </div> -->
     </section>
 
 
     <?php
     require 'footer.php';
     ?>
+
+
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
