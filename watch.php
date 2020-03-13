@@ -30,18 +30,7 @@
     
 
     <section id="section-games">
-        <div class="container">
-            <h1 class="fade-in"><?php echo $_SESSION['username']?></h1> <br />
-            <div class="row">
-                <div class="col">
-                    <?php echo $_SESSION['userBio']; ?>
-                </div>
-            </div>
-            <br /><br /><br />
-            <div class="row">
-                <div class="col fade-in" id="twitch-embed"></div>
-            </div>
-        </div>
+        <?php require 'includes/getprofiles.inc.php' ?>
     </section>
 
     <section id="section-sponsors">
@@ -126,14 +115,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script type="text/javascript">
-        new Twitch.Embed("twitch-embed", {
-            width: 480,
-            height: 480,
-            channel: "<?php echo $_SESSION['twitchChannel']?>"
-        });
-    </script>
 
     <script>
         const faders = document.querySelectorAll('.fade-in');
