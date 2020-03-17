@@ -12,6 +12,7 @@ else {
 
     session_start();
 
+    $isAdmin = 0;
     $username = $_SESSION['username'];
     $currentPassword = $_POST['current-password'];
     $postTitle = htmlspecialchars($_POST['title']);
@@ -50,6 +51,13 @@ else {
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)) {
                 mysqli_stmt_close($stmt);
+
+                $isAdmin = $row['usersAdmin'];
+                if (!$isAdmin) {
+                    header("Location: ../post.php?error=noaccess&title=".$postTitle."&description=".$postDescription);
+                    exit();
+                }
+
                 $passCheck = password_verify($currentPassword, $row['usersPass']);
                 if ($passCheck == false) {
                     header("Location: ../post.php?error=wrongpassword&title=".$postTitle."&description=".$postDescription);

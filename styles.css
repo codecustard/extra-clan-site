@@ -164,8 +164,8 @@ footer li {
     padding-bottom: 20em;
 }
 
-a .fa-twitch {
-    color: red;
+a .fa-twitch, a .fa-youtube, a .fa-twitter, a .fa-facebook-f {
+    color: white;
 }
 
 

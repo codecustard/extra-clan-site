@@ -44,7 +44,7 @@
         <div class="container">
             <h1 class="fade-in">Follow Us!</h1> <br />
 
-            <i class="fade-in fab fa-facebook-f fa-7x fa-fw"></i> <i class="fade-in fab fa-twitter fa-7x fa-fw"></i> <i class="fade-in fab fa-youtube fa-7x fa-fw"></i> <a href="https://discord.gg/c3yHUB"><i class="fade-in fab fa-twitch fa-7x fa-fw"></i></a>
+            <i class="fade-in fab fa-facebook-f fa-7x fa-fw"></i> <a href="https://twitter.com/eXtragamingsc2"><i class="fade-in fab fa-twitter fa-7x fa-fw"></i></a> <a href="https://www.youtube.com/channel/UC36QxOS3VpMSmW3K3qhgvtQ/featured"><i class="fade-in fab fa-youtube fa-7x fa-fw"></i></a> <a href="https://discord.gg/c3yHUB"><i class="fade-in fab fa-twitch fa-7x fa-fw"></i></a>
         </div>
         <div class="container">
             <h1>Contact Us!</h1> <br />

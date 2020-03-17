@@ -37,12 +37,17 @@
                 
                 if (isset($_SESSION['username'])) {
                     echo '<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$_SESSION['username'].
-                    '</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$_SESSION['username'];
+                    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+                        echo ' (admin)';
+                    }
+                    echo '</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="profile.php">Profile</a>
-                    <a class="dropdown-item" href="post.php">Post</a>
-                    <a class="dropdown-item" href="includes/logout.inc.php">Logout</a>
+                    <a class="dropdown-item" href="profile.php">Profile</a>';
+                    if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+                        echo '<a class="dropdown-item" href="post.php">Post</a>';
+                    }
+                    echo '<a class="dropdown-item" href="includes/logout.inc.php">Logout</a>
                     </div>
                 </li>';
                 }

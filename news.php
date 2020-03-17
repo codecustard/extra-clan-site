@@ -28,7 +28,8 @@
         <?php 
             if ($singleNews) {
                 echo "<h1 class='display-4'>".$newsTitle."</h1>
-                <h2>".$newsDescription."</h2>";
+                <h2>".$newsDescription."</h2>
+                <h3>By ".$newsAuthor."</h3>";
             }
             else {
                 echo "<h1 class='display-4'>LATEST NEWS AND EVENTS</h1>";

@@ -32,6 +32,7 @@ if (isset($_POST['login-button'])) {
                 else if ($passCheck == true) {
                     session_start();
                     $_SESSION['userId'] = $row['usersId'];
+                    $_SESSION['isAdmin'] = $row['usersAdmin'];
                     $_SESSION['username'] = $row['usersUser'];
                     $_SESSION['userBio'] = $row['usersBio'];
                     $_SESSION['twitchChannel'] = $row['usersTwitch'];

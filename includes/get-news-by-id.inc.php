@@ -21,6 +21,7 @@ else {
         $newsTitle = $row['newsTitle'];
         $newsDescription = $row['newsDescription'];
         $newsContent = $row['newsContent'];
+        $newsAuthor = $row['newsAuthor'];
     }
 }
 

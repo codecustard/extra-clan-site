@@ -31,11 +31,12 @@
         <div class="container">
             <h1 class="fade-in">Games</h1> <br />
             <img class="fade-in drop-shadow" src="https://media.giphy.com/media/l0MYtTmeB2KYB8bQI/giphy.gif" alt="">
-            <div class="row">
-                <div class="col fade-in" id="twitch-meek">
-                </div>
-                <div class="col fade-in" id="twitch-bipolarbear"></div>
-
+            <?php /*require 'includes/get-live-streams.inc.php'*/ ?>
+            <div class='row'>
+                <div class='col fade-in' id='twitch-meek'></div>
+            </div>
+            <div class='row'>
+                <div class='col fade-in' id='twitch-bipolarbear24'></div>
             </div>
         </div>
     </section>
@@ -60,10 +61,10 @@
             height: 480,
             channel: "meekstarcraft"
         });
-        new Twitch.Embed("twitch-bipolarbear", {
+        new Twitch.Embed("twitch-bipolarbear24", {
             width: 480,
             height: 480,
-            channel: "bipolarbear"
+            channel: "bipolarbear24"
         });
     </script>
 
