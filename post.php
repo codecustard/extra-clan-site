@@ -27,14 +27,25 @@
     $postTitle = isset($_SESSION['postTitle']) ? $_SESSION['postTitle'] : '';
     $postDescription = isset($_SESSION['postDescription']) ? $_SESSION['postDescription'] : '';
     $postContent = isset($_SESSION['postContent']) ? $_SESSION['postContent'] : '';
+    $editPost = $_SESSION['postEdit'];
+    $headerString = "CREATE NEW POST";
+    if ($editPost && isset($_GET['id'])) {
+        $headerString = "EDIT POST";
+    }
 
     ?>
 
         <div class="container">
-            <h1 class="display-4">CREATE NEW POST</h1>
+            <h1 class="display-4"><?php echo $headerString ?></h1>
             
             <div class="container-form">
                 <form action="includes/create-post.inc.php" method="POST">
+                    <?php
+                        if (isset($_GET['id'])) {
+                            echo '
+                            <input type="hidden" name="post-id" value="'. $_GET['id'].'">';
+                        }
+                    ?>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -59,7 +70,7 @@
                         <input type="password" class="form-control" name="current-password" placeholder="Current Password" required>
                     </div>
     
-                    <button type="submit" class="btn btn-primary" name="create-post-button">Create Post</button>
+                    <button type="submit" class="btn btn-primary" name="create-post-button"><?php echo $headerString ?></button>
                 </form>
             </div>
 

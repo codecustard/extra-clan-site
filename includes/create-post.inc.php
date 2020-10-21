@@ -14,6 +14,7 @@ else {
 
     $isAdmin = 0;
     $username = $_SESSION['username'];
+    $postId = $_POST['post-id'];
     $currentPassword = $_POST['current-password'];
     $postTitle = htmlspecialchars($_POST['title']);
     $postDescription = htmlspecialchars($_POST['description']);
@@ -64,7 +65,12 @@ else {
                     exit();
                 }
                 else if ($passCheck == true) {
-                    $sql = "INSERT INTO news (newsTitle, newsDescription, newsContent, newsAuthor) VALUES (?, ?, ?, ?)";
+                    if (isset($_POST['post-id'])) {
+                        $sql = "UPDATE news  SET newsTitle=?, newsDescription=?, newsContent=?, newsAuthor=? WHERE newsId=?";
+                    }
+                    else {
+                        $sql = "INSERT INTO news (newsTitle, newsDescription, newsContent, newsAuthor) VALUES (?, ?, ?, ?)";
+                    }
                     $stmt = mysqli_stmt_init($conn);
         
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -72,8 +78,20 @@ else {
                         exit();
                     }
                     else {
-                        mysqli_stmt_bind_param($stmt, "ssss", $postTitle, $postDescription, $postContent, $username);
+                        if (isset($_POST['post-id'])) {
+                            mysqli_stmt_bind_param($stmt, "ssssi", $postTitle, $postDescription, $postContent, $username, $postId);
+                        }
+                        else {
+                            mysqli_stmt_bind_param($stmt, "ssss", $postTitle, $postDescription, $postContent, $username);
+                        }
                         mysqli_stmt_execute($stmt);
+
+                        $_SESSION['postTitle'] = $postTitle;
+                        $_SESSION['postDescription'] = $postDescription;
+                        $_SESSION['postContent'] = $postContent;
+                        if (isset($_POST['post-id'])) {
+                            $_SESSION['postEdit'] = $postId;
+                        }
                         header("Location: ../post.php?sent=success");
                         exit();
                     }

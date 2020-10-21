@@ -30,6 +30,16 @@
                 echo "<h1 class='display-4'>".$newsTitle."</h1>
                 <h2>".$newsDescription."</h2>
                 <h3>By ".$newsAuthor."</h3>";
+
+                if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == true) {
+                    $_SESSION['postTitle'] = $newsTitle;
+                    $_SESSION['postDescription'] = $newsDescription;
+                    $_SESSION['postContent'] = $newsContent;
+                    $_SESSION['postEdit'] = $_GET['newsId'];
+                    echo ' <a href="post.php?id='.$_GET['newsId'].'">Edit</a>';
+                }
+
+                
             }
             else {
                 echo "<h1 class='display-4'>LATEST NEWS AND EVENTS</h1>";
